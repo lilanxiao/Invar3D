@@ -2,9 +2,6 @@
 
 Offcial repository for "A Closer Look at Invariances in Self-supervised Pre-training for 3D Vision", ECCV 2022. 
 
-## Notice
-
-This repository is not fully tested yet. Still working on clearning the code. 
 
 ## Requirements
 
@@ -73,4 +70,60 @@ To prepare the pre-training data:
 - **[Optional]** if you want to save the sampled data to another place, use `scannet/save_sampled`. Remeber to update `scannet/config` if you want to read data from this new place. 
 
 
+## Usage
+
+To pretrain a PointNet++ and a depth map based CNN (DPCo), use
+
+    python train_dp_moco_ddp.py \
+    --lr 0.03 \
+    --save log/DPCo \
+    --batch-size 64 \
+    --cos \
+    --local \
+    --moco \
+    --worker 8 \
+    --epochs 120 \
+    --dist-url 'tcp://localhost:10001' \
+    --multiprocessing-distributed \
+    --world-size 1 \
+    --rank 0
+
+The training is done on a single node with 2 NVIDIA Tesla V100 GPU. You might have to update some parameters (e.g. workers, batch-size, work-size) according to you own hardware. Also, the code for single GPU without DDP is in `train_ddp_moco.py`. But this version is only for debugging purpose. 
+
+Similiarly, to pretrain a sparse 3D CNN and depth map based CNN (DVCo with color), use
+
+    export OMP_NUM_THREADS=12 # make MinkowskiEngine happy
+    python train_dv_ddp.py \
+    --lr 0.03 \
+    --save log/DVCo \
+    --batch-size 64 \
+    --cos \
+    --moco \
+    --local \
+    --worker 8 \
+    --epochs 120 \
+    --dist-url 'tcp://localhost:10001' \
+    --multiprocessing-distributed \
+    --world-size 1 \
+    --rank 0
+
+## Note
+
+Clearning of our internal code base and testing with this public repo is not complete yet. There would be updates in the future. 
+
+## Known Issues
+
+- We encountered OOM problems with MinkowskiEngine. The CPU RAM usage increased constantly with some of our code. Current workaround: Manually pause and resume the training to release the RAM. 
+- The training might stop or become very slow sometimes, because the Dataset class tries to find more unique local correpondences and get stuck. In this case, try to decrease the ratio of unique matched points, as commented in `scannet/scannet_pretrain.py`. 
+
+## Cititaion
+
+If you find this repo helpful, please consider cite our work 
+
+    @inproceedings{li2022invar3d,
+        author = {Li, Lanxiao and Heizmann, Michael},
+        title = {A Closer Look at Invariances in Self-supervised Pre-training for 3D Vision},
+        booktitle = {ECCV},
+        year = {2022}
+    }
 
