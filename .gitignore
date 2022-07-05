@@ -17,6 +17,7 @@ build
 *.s
 *.out
 *.egg-info
+sen
 
 # test
 test.py

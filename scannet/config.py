@@ -1,9 +1,11 @@
 import os
 
-# possible path to scannet data
-
+# ---------------------------------------------------------------------------------------------
+# possible path to extracted scannet data (NOT the raw data!)
+# please update!
 GUESS = [os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"),
         ]
+# ---------------------------------------------------------------------------------------------
 
 TARGET = None
 for g in GUESS:

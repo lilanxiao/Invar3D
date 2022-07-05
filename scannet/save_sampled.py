@@ -15,9 +15,10 @@ SCANS = sorted(os.listdir(TARGET))
 TRAIN_FRAMES = os.path.join(BASE_DIR, "sampled_train_25.txt")
 VAL_FRAMES = os.path.join(BASE_DIR, "sampled_val_25.txt")
 
-# the place to save
-SAVE = "/media/lanxiao/SSD_1T/scannet_contrast"
-
+# ---------------------------------------------------
+# the path to save, please update!
+SAVE = None
+# ---------------------------------------------------
 
 def copy_images(log):
     with open(log, "r") as f:
