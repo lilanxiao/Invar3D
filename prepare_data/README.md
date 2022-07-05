@@ -1,4 +1,4 @@
-# Preperation for ScanNet data
+# Preparation for ScanNet data
 
 The code in this folder is modified from ScanNet [official repo](https://github.com/ScanNet/ScanNet). 
 **Warning**: Due to the large amount of data, the code for data preparation is not fully tested yet. 
@@ -8,7 +8,7 @@ The code in this folder is modified from ScanNet [official repo](https://github.
 
         bash build.sh
 
-- Then extract the raw data, you need to first update the paths in `unpack_img.py`. Note the unpacked data would further take hunderds of GB. Then run:
+- Then extract the raw data, you need to first update the paths in `unpack_img.py`. Note the unpacked data would further take hundreds of GB. Then run:
     
         python unpack_img.py
   

@@ -1,17 +1,16 @@
 # A Closer Look at Invariances in Self-supervised Pre-training for 3D Vision
 
-Offcial repository for "A Closer Look at Invariances in Self-supervised Pre-training for 3D Vision", ECCV 2022. 
-
+This repository is for our paper "A Closer Look at Invariances in Self-supervised Pre-training for 3D Vision", ECCV 2022. 
 
 ## Requirements
 
 ### Hardware
 
-The training scripts with `_ddp` expect distributed training with multiple GPU. But some samples for single GPU training is also provided. 
+The training scripts with `_ddp` expect distributed training with multiple GPUs. But some samples for single GPU training is also provided. 
 
 ### Software
 
-The code is tested under Ubuntu 18.04 and 20.04. CUDA-toolkit (tested with 10.2 and 11.1) and GCC is needed for compiling some extensions. Also, following python packges are required:
+The code is tested under Ubuntu 18.04 and 20.04. CUDA-toolkit (tested with 10.2 and 11.1) and GCC is needed for compiling some extensions. Also, following python packages are required:
 
     pytorch     # tested with 1.8. other versions should work as well
     torchvision
@@ -67,7 +66,7 @@ To prepare the pre-training data:
 
 
 - You don't need to sample the data. The sampled `frmae-IDs` (with factor 25) are already provided in `scannet/sampled_train_25.txt`. The code in `scannet/sampler.py` is used for sampling.
-- **[Optional]** if you want to save the sampled data to another place, use `scannet/save_sampled`. Remeber to update `scannet/config` if you want to read data from this new place. 
+- **[Optional]** if you want to save the sampled data to another place, use `scannet/save_sampled`. Remember to update `scannet/config` if you want to read data from this new place. 
 
 
 ## Usage
@@ -90,7 +89,7 @@ To pretrain a PointNet++ and a depth map based CNN (DPCo), use
 
 The training is done on a single node with 2 NVIDIA Tesla V100 GPU. You might have to update some parameters (e.g. workers, batch-size, work-size) according to you own hardware. Also, the code for single GPU without DDP is in `train_ddp_moco.py`. But this version is only for debugging purpose. 
 
-Similiarly, to pretrain a sparse 3D CNN and depth map based CNN (DVCo with color), use
+Similarly, to pretrain a sparse 3D CNN and depth map based CNN (DVCo with color), use
 
     export OMP_NUM_THREADS=12 # make MinkowskiEngine happy
     python train_dv_ddp.py \
@@ -109,14 +108,14 @@ Similiarly, to pretrain a sparse 3D CNN and depth map based CNN (DVCo with color
 
 ## Note
 
-Clearning of our internal code base and testing with this public repo is not complete yet. There would be updates in the future. 
+We are still working on cleaning our internal code base and testing with this public repo. There would be updates in the future. 
 
 ## Known Issues
 
 - We encountered OOM problems with MinkowskiEngine. The CPU RAM usage increased constantly with some of our code. Current workaround: Manually pause and resume the training to release the RAM. 
-- The training might stop or become very slow sometimes, because the Dataset class tries to find more unique local correpondences and get stuck. In this case, try to decrease the ratio of unique matched points, as commented in `scannet/scannet_pretrain.py`. 
+- The training might stop or become very slow sometimes, because the Dataset class tries to find more unique local correspondences and get stuck. In this case, try to decrease the ratio of unique matched points, as commented in `scannet/scannet_pretrain.py`. 
 
-## Cititaion
+## Citation
 
 If you find this repo helpful, please consider cite our work 
 
