@@ -1,0 +1,29 @@
+# data relevent
+*.h5
+*.pkl
+*.pth
+
+# IDE editor
+.vscode
+.idea
+
+# cache
+__pycache__
+
+# build, compile, lib
+dist
+build
+*.so
+*.s
+*.out
+*.egg-info
+
+# test
+test.py
+
+# log
+log
+
+# data
+modelnet40_normal_resampled
+modelnet40_normal_resampled_cache
