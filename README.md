@@ -126,3 +126,12 @@ If you find this repo helpful, please consider cite our work
         year = {2022}
     }
 
+## Acknowledgement
+
+This repo has modified some code from following repos. We thank the authors for their amazing code bases. Please consider star/cite their works as well. 
+
+- ScanNet: https://github.com/ScanNet/ScanNet
+- MinkowskiEngine: https://github.com/NVIDIA/MinkowskiEngine
+- MoCo: https://github.com/facebookresearch/moco
+- VoteNet: https://github.com/facebookresearch/votenet
+- DepthContrast: https://github.com/facebookresearch/DepthContrast
