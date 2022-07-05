@@ -336,6 +336,7 @@ class ScannetDepthPointDataset(Dataset):
             ind1 = dist_mask.nonzero()[0]
             
             # break loop if has enough overlap (80% of num_match are unique)
+            # FIXME: might slow down the training. use lower rate if necessary
             if len(ind1) > self.num_match//5*4:
                 break
 
@@ -477,6 +478,8 @@ class ScanNetPointVoxelDataset(Dataset):
             dist_mask = np.linalg.norm(nn_xyz - pcd1_fps, axis=1, ord=2) < self.match_thresh
             ind1 = dist_mask.nonzero()[0]
             
+            # break loop if has enough overlap (80% of num_match are unique)
+            # FIXME: might slow down the training. use lower rate if necessary
             if len(ind1) > self.num_match//5*4:
                 break
             
@@ -577,6 +580,8 @@ class ScanNetPointPointDataset(Dataset):
             dist_mask = np.linalg.norm(nn_xyz - pcd1_fps, axis=1, ord=2) < self.match_thresh
             ind1 = dist_mask.nonzero()[0]
             
+            # break loop if has enough overlap (80% of num_match are unique)
+            # FIXME: might slow down the training. use lower rate if necessary
             if len(ind1) > self.num_match//5*4:
                 break
         
@@ -814,6 +819,7 @@ class ScanNetImagePointDataset(Dataset):
             dist_mask = np.linalg.norm(nn_xyz - fm_xyz_fps, axis=1, ord=2) < self.match_thresh
             ind1 = dist_mask.nonzero()[0]
 
+            # FIXME: might slow down the training. use lower rate if necessary
             if len(ind1) > self.num_match//2:
                 break
 

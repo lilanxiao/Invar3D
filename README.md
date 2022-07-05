@@ -37,7 +37,7 @@ To compile C++-extensions, go to `cpp_ext/fps` and `cpp/knn` and run
 
     bash build.sh
 
-under in **each** folder. 
+in **each** folder. 
 
 To compile CUDA-extension (PointNet++), go to `model/pointnet2` and run 
 
