@@ -10,7 +10,7 @@ The training scripts with `_ddp` expect distributed training with multiple GPUs.
 
 ### Software
 
-The code is tested under Ubuntu 18.04 and 20.04. CUDA-toolkit (tested with 10.2 and 11.1) and GCC is needed for compiling some extensions. Also, following python packages are required:
+The repo is tested under Ubuntu 18.04 and 20.04. CUDA-toolkit (tested with 10.2 and 11.1) and GCC is needed to compile some extensions. Also, following python packages are required:
 
     pytorch     # tested with 1.8. other versions should work as well
     torchvision
@@ -65,9 +65,9 @@ To prepare the pre-training data:
         |   ... ... 
 
 
-- You don't need to sample the data. The sampled `frmae-IDs` (with factor 25) are already provided in `scannet/sampled_train_25.txt`. The code in `scannet/sampler.py` is used for sampling.
-- **[Optional]** if you want to save the sampled data to another place, use `scannet/save_sampled`. Remember to update `scannet/config` if you want to read data from this new place. 
-
+- You don't need to sample the data. The sampled `frame-IDs` (with the factor 25) are already provided in `scannet/sampled_train_25.txt`. The code in `scannet/sampler.py` is used for sampling.
+- **[Optional]** If you want to save the sampled data to another place, use `scannet/save_sampled`. Remember to update `scannet/config` if you want to read data from this new place. 
+- **[Notice]** Some extracted depth maps might only contains NaN or O value and are thus invalid. We've found all invalid `frame-Ids` and saved them in `scannet/config.py`. These frames are not used for training.   
 
 ## Usage
 
@@ -87,7 +87,7 @@ To pretrain a PointNet++ and a depth map based CNN (DPCo), use
     --world-size 1 \
     --rank 0
 
-The training is done on a single node with 2 NVIDIA Tesla V100 GPU. You might have to update some parameters (e.g. workers, batch-size, work-size) according to you own hardware. Also, the code for single GPU without DDP is in `train_ddp_moco.py`. But this version is only for debugging purpose. 
+Our training is done on a single node with 2 NVIDIA Tesla V100 GPUs. You might have to update some parameters (e.g. workers, batch-size, world-size) according to you own hardware. Also, the code for single GPU without DDP is provided in `train_ddp_moco.py`. But we only use this version for debugging purpose. 
 
 Similarly, to pretrain a sparse 3D CNN and depth map based CNN (DVCo with color), use
 
@@ -113,7 +113,7 @@ We are still working on cleaning our internal code base and testing with this pu
 ## Known Issues
 
 - We encountered OOM problems with MinkowskiEngine. The CPU RAM usage increased constantly with some of our code. Current workaround: Manually pause and resume the training to release the RAM. 
-- The training might stop or become very slow sometimes, because the Dataset class tries to find more unique local correspondences and get stuck. In this case, try to decrease the ratio of unique matched points, as commented in `scannet/scannet_pretrain.py`. 
+- The training might stop or become very slow sometimes, because the Dataset class tries to find more unique local correspondences and get stuck. In this case, try to decrease the ratio of unique matched points or increase the matching threshold `match_thresh`, as commented in `scannet/scannet_pretrain.py`. 
 
 ## Citation
 

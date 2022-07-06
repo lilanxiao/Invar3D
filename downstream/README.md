@@ -3,7 +3,7 @@
 This document shows how to finetune a VoteNet with the pretrained weights. 
 
 - Use `extract_dp_ddp_model.py` to extract pretrained weights of PointNet++ from a DDP model. This script is for models trained with `train_ddp_moco_ddp.py`. For other pre-training methods, the required modification is straightforward and is thus not provided here. 
-- Clone the VoteNet [official repo]("https://github.com/facebookresearch/votenet") and follow the instruction their to install dependencies and prepare data. 
+- Clone the VoteNet [official repo]("https://github.com/facebookresearch/votenet") and follow it's instruction to install dependencies and prepare finetuning data. 
 - Put `votenet_finetune.py` to the root of VoteNet repo.
 - Add following method to `votenet/sunrgbd/sunrgbd_detection_dataset.py` and `votenet/scannet/scannet_detection_dataset.py`. This is used to sample the training data for the data efficiency experiment. 
 
