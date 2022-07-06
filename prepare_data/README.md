@@ -35,6 +35,10 @@ The code in this folder is modified from ScanNet [official repo](https://github.
         |   ... ...
     
     `frame-ID.png`: depth maps with 640x480. 
+
     `frame-ID.color.jpg`: color images with 640x480. 
+
     `frame-ID.pos.txt`: camera extrinsic. Not unsed in our training. 
+
     `_info.txt`: some meta data of the scene. Only the camera intrinsic in it is used. 
+    
