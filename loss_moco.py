@@ -338,15 +338,3 @@ class PointNet2Head(nn.Module):
         else:
             return y    
 
-
-if __name__ == "__main__":
-    net = NCELossMoco(2048, 256, 0.01)
-    for i in range(10000):
-        x1 = torch.rand(8, 256, 28, 28)
-        x2 = torch.rand(8, 256, 30)
-        x1 = global_features(x1)
-        x2 = global_features(x2)
-        loss = net(x1, x2)
-        if i%100==0:
-            print("[{:05d}] Loss: {:.5f}  Pointer: {:d} {:d}"
-                  .format(i, loss.item(), int(net.queue_ptr), int(net.queue_other_ptr)))    

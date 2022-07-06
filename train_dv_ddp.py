@@ -2,8 +2,6 @@
 import cv2      # first import cv2, then torch
 cv2.setNumThreads(0)
 # https://github.com/pytorch/pytorch/issues/1838
-# no need to use OpenCV with multithreading since 
-# Pytorch alread uses multiprocessing 
 # ------------------------------------------------
 import os
 import math

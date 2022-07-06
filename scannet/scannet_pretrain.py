@@ -1035,15 +1035,3 @@ def test_depth_voxel():
         color=[1, 0, 0])
     frame = create_frame()
     o3d.visualization.draw_geometries([pcd1, pcd2, lineset, frame])
-                   
-
-if __name__ == "__main__":
-    # test_point_voxel2()
-    # test_depth_point()
-    test_point_point()
-    # test_num_pairs()
-    # test_base()
-    # test_point_voxel2()
-    # test_depth_voxel()
-    # test_image_point()
-    
