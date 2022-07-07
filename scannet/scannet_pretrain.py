@@ -355,7 +355,7 @@ class ScannetDepthPointDataset(Dataset):
             # img1 = jitter_depth(img1, sigma=0.01)
             
             # random distortion depth
-            img1 = random_distort_depth(img1, delta=0.3)
+            # img1 = random_distort_depth(img1, delta=0.3)
 
             # set d <-- max_depth - d
             # change the histogram of depth
