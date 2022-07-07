@@ -1,6 +1,6 @@
 # A Closer Look at Invariances in Self-supervised Pre-training for 3D Vision
 
-This repository is for our paper "A Closer Look at Invariances in Self-supervised Pre-training for 3D Vision", ECCV 2022. 
+This repository is for our paper "A Closer Look at Invariances in Self-supervised Pre-training for 3D Vision", Lanxiao Li and Michael Heizmann, ECCV 2022. 
 
 ## Requirements
 
