@@ -71,6 +71,8 @@ To prepare the pre-training data:
 
 ## Usage
 
+### Pretraining
+
 To pretrain a PointNet++ and a depth map based CNN (DPCo), use
 
     python train_dp_moco_ddp.py \
@@ -105,6 +107,11 @@ Similarly, to pretrain a sparse 3D CNN and depth map based CNN (DVCo with color)
     --multiprocessing-distributed \
     --world-size 1 \
     --rank 0
+
+
+### Finetuning
+
+For finetuning on 3D object detection task, please follow `README.md` in `downstream`. 
 
 ## Note
 
