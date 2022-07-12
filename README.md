@@ -1,6 +1,6 @@
 # A Closer Look at Invariances in Self-supervised Pre-training for 3D Vision
 
-This repository is for our paper "A Closer Look at Invariances in Self-supervised Pre-training for 3D Vision", Lanxiao Li and Michael Heizmann, ECCV 2022. 
+This repository is for our paper "A Closer Look at Invariances in Self-supervised Pre-training for 3D Vision", Lanxiao Li and Michael Heizmann, ECCV 2022 ([Arxiv](https://arxiv.org/abs/2207.04997)).
 
 ## Requirements
 
@@ -47,7 +47,7 @@ To prepare the pre-training data:
 - First you need to download and prepare the ScanNet raw data. Please follow `README.md` in `prepare_data`.
 - Update the data path in `scannet/config`. The data folder should have the following structure:
 
-        data_folder
+        $DATA_FOLDER
         |
         |__ scene0000_00
         |   |
