@@ -45,7 +45,7 @@ To compile CUDA-extension (PointNet++), go to `model/pointnet2` and run
 To prepare the pre-training data: 
 
 - First you need to download and prepare the ScanNet raw data. Please follow `README.md` in `prepare_data`.
-- Update the data path in `scannet/config`. The data folder should have the following structure:
+- Update the data path in `scannet/config.py`. The data folder should have the following structure:
 
         $DATA_FOLDER
         |
@@ -66,7 +66,7 @@ To prepare the pre-training data:
 
 
 - You don't need to sample the data. The sampled `frame-IDs` (with the factor 25) are already provided in `scannet/sampled_train_25.txt`. The code in `scannet/sampler.py` is used for sampling.
-- **[Optional]** If you want to save the sampled data to another place, use `scannet/save_sampled`. Remember to update `scannet/config` if you want to read data from this new place. 
+- **[Optional]** If you want to save the sampled data to another place, use `scannet/save_sampled.py`. Remember to update `scannet/config.py` if you want to read data from this new place. 
 - **[Notice]** Some extracted depth maps might only contains NaN or O value and are thus invalid. We've found all invalid `frame-Ids` and saved them in `scannet/config.py`. These frames are not used for training.   
 
 ## Usage
